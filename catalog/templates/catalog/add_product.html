@@ -1,0 +1,44 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}Add product{% endblock %}
+
+{% block content %}
+
+<div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Добавление продукта</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="" class="form-floating" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name">Название продукта</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Имя продукта" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="category">Категория</label>
+                          <select class="form-select" name="category" id="category" aria-label="Default select example">
+                              <option selected></option>
+                              {% for category in categories %}
+                              <option>{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                      <div class="mb-3">
+                            <label for="price">Цена</label>
+                            <input type="number" name="price" class="form-control" id="price" placeholder="Цена" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description">Описание</label>
+                            <textarea type="text" name="description" class="form-control" id="description" placeholder="Описание продукта" required></textarea>
+                        </div>
+                      <div class="mb-3">
+                        <label for="image" class="form-label">Изображение</label>
+                        <input class="form-control" name="image" type="file" id="image">
+                      </div>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Добавить продукт</button>
+                    </form>
+                </div>
+            </div>
+
+{% endblock %}

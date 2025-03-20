@@ -5,7 +5,7 @@
     "fields": {
         "name": "Samsung Galaxy S23",
         "description": "Одна из последних моделей",
-        "image": "",
+        "image": "S23.jpg",
         "category": 2,
         "price": 60000.0,
         "created_at": "2025-03-07T12:24:56.820Z",
@@ -18,7 +18,7 @@
     "fields": {
         "name": "LG 32LQ63006LA",
         "description": "32 дюйма Full HD",
-        "image": "",
+        "image": "LG 32LQ63006LA.jpg",
         "category": 1,
         "price": 30000.0,
         "created_at": "2025-03-07T12:25:03.165Z",
@@ -31,7 +31,7 @@
     "fields": {
         "name": "LG UHD TV",
         "description": "Экран 65 дюймов",
-        "image": "",
+        "image": "LG UHD TV.jpg",
         "category": 1,
         "price": 40000.0,
         "created_at": "2025-03-07T12:26:03.230Z",
