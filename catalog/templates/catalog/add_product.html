@@ -6,13 +6,22 @@
 
 <div class="card mb-4 box-shadow">
                 <div class="card-header">
+                    {% if not product %}
                     <h4 class="my-0 font-weight-normal">Добавление продукта</h4>
+                    {% else %}
+                    <h4 class="my-0 font-weight-normal">Обновление продукта</h4>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <form method="post" action="" class="form-floating" enctype="multipart/form-data">
                         {% csrf_token %}
+                        {{ form.non_field_errors }}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Добавить продукт</button>
+                         {% if not product %}
+                         <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Добавить продукт</button>
+                         {% else %}
+                         <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Обновить продукт</button>
+                         {% endif %}
                         <a href='{% url "home" %}' class="btn btn-secondary">Отмена</a>
                     </form>
                 </div>
