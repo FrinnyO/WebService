@@ -22,7 +22,7 @@
                          {% else %}
                          <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Обновить продукт</button>
                          {% endif %}
-                        <a href='{% url "home" %}' class="btn btn-secondary">Отмена</a>
+                        <a href="{% url 'catalog:home' %}" class="btn btn-secondary">Отмена</a>
                     </form>
                 </div>
             </div>

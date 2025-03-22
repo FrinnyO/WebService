@@ -22,8 +22,8 @@
                 <li><b>Описание:</b> {{ product.description }} </li>
             </ul>
               <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
-              <a class="p-2 btn btn-outline-primary" href="{% url 'product_update' product.pk %}">Обновить Продукт</a>
-              <a class="p-2 btn btn-outline-danger" href="{% url 'product_delete' product.pk %}">Удалить Продукт</a>
+              <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_update' product.pk %}">Обновить Продукт</a>
+              <a class="p-2 btn btn-outline-danger" href="{% url 'catalog:product_delete' product.pk %}">Удалить Продукт</a>
           </div>
           <div class="card-footer text-body-secondary">
               Продукт был обновлен: {{product.updated_at|date:"d.m.Y"}}
