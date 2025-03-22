@@ -22,6 +22,8 @@
 4. ***article_update***
 5. ***article_confirm_delete***
 
+В проекте реализована авторизация и регистрация.
+
 ### Подключенные маршруты
 
 1. localhost:8000/catalog/home/
@@ -84,6 +86,13 @@ python manage.py add_articles
 
 **DATABASE_PORT = Номер порта базы данных**
 
+Для работы отправки почты необходимо настроить почтовый сервер со следующими настройками в файле ***.env***
+
+**EMAIL_HOST=**
+**EMAIL_USE_TLS=**
+**EMAIL_PORT=**
+**EMAIL_HOST_USER=**
+**EMAIL_HOST_PASSWORD=**
 
 ### Структура проекта:
 

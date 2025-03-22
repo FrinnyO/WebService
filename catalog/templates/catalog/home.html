@@ -17,15 +17,13 @@
             {% for product in products %}
               <div class="col">
                 <div class="card mb-4 box-shadow">
-                    <a href='{% url "single_product" product.pk %}'>
                         {% if product.image %}
                     <img src="{{ product.image | media_filter}}" alt="{{ product.name }}" class="card-img-top img-fluid" >
                         {% else %}
                         <img src="{% static "placeholder.png"%}" alt="{{ product.name }}" class="card-img-top img-fluid" >
                         {% endif %}
-                    </a>
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal"><a href='{% url "single_product" product.pk %}' class="link-underline-light">{{ product.name }}</a>></h4>
+                        <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ product.price }}$</h1>
@@ -34,7 +32,7 @@
                             <li><b>Описание:</b>{{ product.description|truncatechars:100 }}</li>
                         </ul>
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">
-                            <a href="{% url 'single_product' product.pk %}" class="link-underline-light link-underline-opacity-0">Посмотреть</a>
+                            <a href="{% url 'catalog:single_product' product.pk %}" class="link-underline-light link-underline-opacity-0">Посмотреть</a>
                         </button>
                         <p class="card-text"><small class="text-body-secondary"><b>Обновлено:</b> {{ product.updated_at|date:"d.m.Y" }}</small></p>
                     </div>
