@@ -12,6 +12,7 @@
 2. ***contacts***
 3. ***single_product***
 4. ***add_product***
+5. ***product_confirm_delete***
 
 А также приложение **blog** внутри которого присутствуют страницы:
 
@@ -25,14 +26,16 @@
 
 1. localhost:8000/catalog/home/
 2. localhost:8000/catalog/contacts/
-3. localhost:8000/catalog/products/
-4. localhost:8000/catalog/add_product/
-5. localhost:8000/blog/articles_list/
-6. localhost:8000/blog/article_detail/
-7. localhost:8000/blog/article_create/
-8. localhost:8000/blog/article_update/
-9. localhost:8000/blog/article_confirm_delete/
-10. localhost:8000/admin/
+3. localhost:8000/catalog/product/<pk>/
+4. localhost:8000/catalog/product/<pk>/update/
+5. localhost:8000/catalog/product/<pk>/delete/
+6. localhost:8000/catalog/add_product/
+7. localhost:8000/blog/articles_list/
+8. localhost:8000/blog/article_detail/
+9. localhost:8000/blog/article_create/
+10. localhost:8000/blog/article_update/
+11. localhost:8000/blog/article_confirm_delete/
+12. localhost:8000/admin/
 
 ### База данных
 Проект использует базу данных PostgreSQL. Для создания базы данных и применения миграций используйте следующие команды:
@@ -45,6 +48,12 @@ python manage.py migrate
 
 ### Модели
 Созданы и зарегистрированы модели ***Category***, ***Product***, ***Contact*** в приложении **catalog**.
+
+
+Модель ***Product*** связана с моделью ***Category*** через внешний ключ.
+
+Форма для добавления товара находится в файле ***forms.py*** в приложении **catalog**.
+
 Создана и зарегистрирована модель ***Article*** в приложении **blog**.
 
 Созданы фикстуры для заполнения базы данных тестовыми данными. Для добавления данных в базу данных используйте следующую команду:

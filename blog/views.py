@@ -1,9 +1,9 @@
-from django.shortcuts import render
-
-from django.urls import reverse_lazy
 from django.core.paginator import Paginator
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+
 from .models import Article
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
 class ArticleListView(ListView):
@@ -32,10 +32,10 @@ class ArticleCreateView(CreateView):
     fields = ["title", "content", "preview"]
     success_url = reverse_lazy("articles_list")
 
-
     def form_valid(self, form):
         form.instance.is_published = True
         return super().form_valid(form)
+
 
 class ArticleDetailView(DetailView):
     model = Article
@@ -56,6 +56,7 @@ class ArticleUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("article_detail", kwargs={"pk": self.object.pk})
+
 
 class ArticleDeleteView(DeleteView):
     model = Article
