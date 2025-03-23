@@ -24,9 +24,9 @@ from config.settings import MEDIA_ROOT
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("catalog/", include("catalog.urls", namespace='catalog')),
+    path("catalog/", include("catalog.urls", namespace="catalog")),
     path("blog/", include("blog.urls")),
-    path("users/", include("users.urls", namespace='users')),
+    path("users/", include("users.urls", namespace="users")),
 ]
 
 if settings.DEBUG:

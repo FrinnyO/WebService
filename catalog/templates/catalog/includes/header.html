@@ -3,11 +3,14 @@
     <nav class="ms-5">
         {% if user.is_authenticated %}
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Каталог</a>
+        {% if perms.product.can_unpublish_products %}
+        <a class="p-2 btn btn-outline-warning" href="{% url 'catalog:unpublished_products' %}">Неопубликованные товары</a>
+        {% endif %}
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить Продукт</a>
         <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
             {% csrf_token %}
-            <button type="submit" class="p-2 btn btn-outline-primary">Выход</button>
+            <button type="submit" class="p-2 btn btn-outline-danger">Выход</button>
         </form>
         {% else %}
         <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
