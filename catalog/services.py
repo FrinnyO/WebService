@@ -11,7 +11,7 @@ class ProductService:
     def get_products_in_category(category_id):
         if not CACHE_ENABLED:
             return Product.objects.filter(category_id=category_id)
-        key = "products_in_category"
+        key = f"products_in_category_{category_id}"
         products = cache.get(key)
         if products is not None:
             return products
