@@ -6,8 +6,15 @@
         {% if perms.product.can_unpublish_products %}
         <a class="p-2 btn btn-outline-warning" href="{% url 'catalog:unpublished_products' %}">Неопубликованные товары</a>
         {% endif %}
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Добавить Продукт</a>
+        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Категории
+        </button>
+        <ul class="dropdown-menu">
+            {% for category in categories %}
+            <li><a class="dropdown-item" href="{% url 'catalog:category' category.id %}">{{category.name}}</a></li>
+            {% endfor %}
+        </ul>
         <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
             {% csrf_token %}
             <button type="submit" class="p-2 btn btn-outline-danger">Выход</button>
@@ -16,5 +23,6 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Вход</a>
         {% endif %}
+        <a class="p-2 btn btn-outline-secondary" href="{% url 'catalog:contacts' %}">Контакты</a>
     </nav>
 </div>
