@@ -32,12 +32,13 @@
 4. localhost:8000/catalog/product/<pk>/update/
 5. localhost:8000/catalog/product/<pk>/delete/
 6. localhost:8000/catalog/add_product/
-7. localhost:8000/blog/articles_list/
-8. localhost:8000/blog/article_detail/
-9. localhost:8000/blog/article_create/
-10. localhost:8000/blog/article_update/
-11. localhost:8000/blog/article_confirm_delete/
-12. localhost:8000/admin/
+7. localhost:8000/catalog/category/<pk>/
+8. localhost:8000/blog/articles_list/
+9. localhost:8000/blog/article_detail/
+10. localhost:8000/blog/article_create/
+11. localhost:8000/blog/article_update/
+12. localhost:8000/blog/article_confirm_delete/
+13. localhost:8000/admin/
 
 ### База данных
 Проект использует базу данных PostgreSQL. Для создания базы данных и применения миграций используйте следующие команды:
@@ -87,6 +88,11 @@ python manage.py createadmin
 ```
 python manage.py create_moderators_group
 ```
+
+
+### Кэширование
+
+Настроено кэширование с использованием Redis.
 
 
 ### Переменные окружения
