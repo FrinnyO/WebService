@@ -20,7 +20,7 @@ FORBIDDEN_WORDS = [
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ["created_at", "updated_at"]
+        exclude = ["created_at", "updated_at", "is_published", "owner"]
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -61,6 +61,6 @@ class ProductForm(forms.ModelForm):
             if image.size > 5 * 1024 * 1024:
                 raise ValidationError("Размер изображения не должен превышать 5 Мб")
 
-            if not image.content_type in ["image/jpeg", "image/png"]:
+            if hasattr(image.file, "content_type") and image.file.content_type not in ["image/jpeg", "image/png"]:
                 raise ValidationError("Формат изображения должен быть JPEG или PNG")
         return image

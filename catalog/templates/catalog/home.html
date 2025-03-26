@@ -28,8 +28,9 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ product.price }}$</h1>
                         <ul class="list-unstyled mt-3 mb-4 text-start m-6">
-                            <li><b>Категория:</b>{{ product.category }}</li>
-                            <li><b>Описание:</b>{{ product.description|truncatechars:100 }}</li>
+                            <li><b>Категория: </b>{{ product.category }}</li>
+                            <li><b>Описание: </b>{{ product.description|truncatechars:100 }}</li>
+                            <li><b>Владелец: </b>{{ product.owner }}</li>
                         </ul>
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">
                             <a href="{% url 'catalog:single_product' product.pk %}" class="link-underline-light link-underline-opacity-0">Посмотреть</a>

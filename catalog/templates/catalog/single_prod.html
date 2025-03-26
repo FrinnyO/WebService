@@ -9,25 +9,44 @@
     <div class="row text-center">
         <div class="card text-center">
             <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ product.image | media_filter }}" class="card-img-top img-fluid" style="width: 300px; height: 300px;" alt="{{ product.name }}">
+            <img src="{{ product.image | media_filter }}" class="card-img-top img-fluid"
+                     style="width: 300px; height: 300px;" alt="{{ product.name }}">
             </div>
-          <div class="card-header">
-              <h2>{{ product.name }}</h2>
-              <p class="card-text"><small class="text-body-danger"><b>Добавлено:</b> {{ product.created_at|date:"d.m.Y" }}</small></p>
-          </div>
-          <div class="card-body">
-              <h3 class="card-title pricing-card-title">{{ product.price }}$</h3>
-            <ul class="list-unstyled mt-3 mb-4 text-start m-6">
-                <li><b>Категория:</b> {{ product.category }}</li>
-                <li><b>Описание:</b> {{ product.description }} </li>
-            </ul>
-              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
-              <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_update' product.pk %}">Обновить Продукт</a>
-              <a class="p-2 btn btn-outline-danger" href="{% url 'catalog:product_delete' product.pk %}">Удалить Продукт</a>
-          </div>
-          <div class="card-footer text-body-secondary">
-              Продукт был обновлен: {{product.updated_at|date:"d.m.Y"}}
-          </div>
+            <div class="card-header">
+                <h2>{{ product.name }}</h2>
+                <p class="card-text"><small class="text-body-danger"><b>Добавлено:</b>
+                    {{ product.created_at|date:"d.m.Y" }}</small></p>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title pricing-card-title">{{ product.price }}$</h3>
+                <ul class="list-unstyled mt-3 mb-4 text-start m-6">
+                    <li><b>Категория: </b> {{ product.category }}</li>
+                    <li><b>Описание: </b> {{ product.description }}</li>
+                    <li><b>Владелец: </b>{{ product.owner }}</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                {% if product.owner == user %}
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_update' product.pk %}">Редактировать
+                    </a>
+                <a class="p-2 btn btn-outline-danger" href="{% url 'catalog:product_delete' product.pk %}">Удалить
+                    Продукт
+                </a>
+                {% endif %}
+                {% if product.is_published %}
+                <form action="{% url 'catalog:unpublish_product' product.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="p-2 btn btn-outline-info">Изъять продукт из каталога</button>
+                </form>
+                {% else %}
+                <form action="{% url 'catalog:unpublish_product' product.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="p-2 btn btn-outline-info">Опубликовать продукт</button>
+                </form>
+                {% endif %}
+            </div>
+            <div class="card-footer text-body-secondary">
+                Продукт был обновлен: {{product.updated_at|date:"d.m.Y"}}
+            </div>
         </div>
     </div>
 </div>
